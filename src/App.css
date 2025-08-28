@@ -1,119 +1,212 @@
-:root {
-  background-color: #000;
-  --color-text: #fff;
+/* Safe area wrapper so header clears the iPhone dynamic island */
+.SafeArea {
+  padding-top: calc(env(safe-area-inset-top) + 8px);
 }
 
+/* Background like your working template — sits behind content */
 .Background {
   position: fixed;
-  background: radial-gradient(
-    71.43% 62.3% at 46.43% 36.43%,
-    rgba(18, 229, 229, 0) 15%,
-    rgba(239, 155, 255, 0.3) 56.35%,
-    #ff6448 100%
-  );
-  box-shadow: 0px 12.93px 28.74px 0px #ffd28db2 inset;
-  border-radius: 50%;
-  width: 200vw;
-  height: 200vw;
-  top: -60vw;
-  left: -14.27vw;
-  transform: rotate(15.25deg);
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, #111 0%, #1f1f1f 220px, transparent 220px);
+  z-index: 0; /* stays below */
 }
 
-.App {
+/* Page wrapper */
+.Shop {
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  z-index: 1; /* ensures it’s above the background */
+  padding: 12px;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-text {
-  color: var(--color-text);
+
+/* Header */
+.Header {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #171717;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #2a2a2a;
 }
 
-.Banner {
-  flex: 5;
-  display: flex;
-  flex-direction: column;
+.Header__brand {
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  z-index: 100;
 }
 
-.Logo {
-  flex-direction: column;
-  align-items: center;
+.Header__logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  margin-right: 10px;
+  background-color: #fff; /* remove if your logo has its own bg */
+}
+
+.Header__title {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.Header__clear {
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 32px;
   justify-content: center;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #343434;
+  background-color: #1e1e1e;
+}
+
+.Header__clearText {
+  color: #e5e5e5;
+}
+
+/* Filters */
+.Filters {
+  margin-top: 12px;
+  background-color: #0b0b0b;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #222;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.Filters__label {
+  color: #bdbdbd;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.Filters__chips {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Chip */
+.Chip {
+  border-color: #2f2f2f;
+  border-width: 1px;
+  border-style: solid;
+  background-color: #141414;
+  border-radius: 999px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 8px;
   margin-bottom: 8px;
 }
 
-.Logo--react {
-  width: 100px;
-  height: 100px;
-  animation: Logo--spin infinite 20s linear;
+.Chip--selected {
+  background-color: #222;
+  border-color: #444;
 }
 
-.Logo--lynx {
-  width: 100px;
-  height: 100px;
-  animation: Logo--shake infinite 0.5s ease;
+.Chip__label {
+  color: #eaeaea;
+  font-size: 12px;
 }
 
-@keyframes Logo--spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Grid */
+.Grid {
+  margin-top: 12px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-@keyframes Logo--shake {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
+.Grid__col {
+  width: 49%;
+  margin-bottom: 12px;
 }
 
-.Content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Card */
+.Card {
+  background-color: #111111;
+  border-radius: 16px;
+  overflow: hidden;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #262626;
+}
+
+.Card__image {
+  width: 100%;
+  height: 160px;
+}
+
+.Card__body {
+  padding: 12px;
+}
+
+.Card__title {
+  color: #ffffff;
+  font-weight: 600;   /* <-- was broken before; now fixed */
+  line-height: 1.3;
+}
+
+.Card__price {
+  color: #c9c9c9;
+  margin-top: 6px;
+}
+
+.Card__tags {
+  margin-top: 8px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Tag {
+  background-color: #1a1a1a;
+  border-radius: 999px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #2b2b2b;
+}
+
+.Tag__text {
+  color: #cfcfcf;
+  font-size: 11px;
+}
+
+.Card__cta {
+  margin-top: 10px;
+  height: 36px;
   justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #0ea5e9; /* cyan-ish CTA */
 }
 
-.Arrow {
-  width: 24px;
-  height: 24px;
-}
-
-.Title {
-  font-size: 36px;
+.Card__ctaText {
+  color: #041016;
   font-weight: 700;
 }
 
-.Subtitle {
-  font-style: italic;
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 8px;
+/* Empty state */
+.Empty {
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  width: 100%;
 }
 
-.Description {
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 15rpx;
-}
-
-.Hint {
-  font-size: 12px;
-  margin: 5px;
-  color: rgba(255, 255, 255, 0.65);
+.Empty__text {
+  color: #9e9e9e;
 }
