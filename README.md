@@ -24,7 +24,7 @@ Smooth user experience
 Includes timeout handling for slow connections and optimized UI rendering.
 
 ## Tech Stack
-Frontend
+# Frontend
 
 LynxJS – React-like framework for building responsive UI
 
@@ -34,7 +34,7 @@ State management – useState, useEffect, and useCallback for managing query sta
 
 Styling – App.css with responsive, modern design using grids, rounded corners, and spacing
 
-Backend
+# Backend
 
 Python with FastAPI
 
@@ -48,29 +48,9 @@ dotenv for secure API key management
 
 CORS middleware for cross-origin access by the frontend
 
-Tools
+# Tools
 
 Git for version control
 
 VS Code as IDE
-## Rspeedy project
 
-This is a ReactLynx project bootstrapped with `create-rspeedy`.
-
-## Getting Started
-
-First, install the dependencies:
-
-```bash
-pnpm install
-```
-
-Then, run the development server:
-
-```bash
-pnpm run dev
-```
-
-Scan the QRCode in the terminal with your LynxExplorer App to see the result.
-
-You can start editing the page by modifying `src/App.tsx`. The page auto-updates as you edit the file.
