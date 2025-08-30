@@ -19,6 +19,7 @@ Users type free-form queries like “hoodie under $30, shipping 3 days”.
 The AI parses intent, extracts key product requirements, and returns a ranked list.
 
 How it’s implemented:
+
 -The query is managed in frontend state (message in App.tsx) via Lynx’s useState.
 
 -On submit (handleSubmit):
@@ -31,26 +32,39 @@ How it’s implemented:
 
 The backend:
 -Exposes a FastAPI /chat endpoint.
+
 -Forwards the query to OpenAI’s API.
+
 -Uses regex post-processing to extract structured product info into JSON.
+
 -Responds with { response: <summary>, products: <array> }.
+
 -Frontend parses the array with toUIProduct → converts OpenAI’s fields (title, price, image_url, description) into strongly typed Product objects.
 
 ## 2. Product Grid
 
 Products are displayed in a scrollable two-column grid. Each product is shown as a card with:
+
 -Image (default fallback from picsum.photos if missing).
+
 -Title (truncated at 48 chars).
+
 -Price (parsed into number, formatted to 2 decimals).
+
 -Shipping details (if available).
+
 -Tags (up to 3 visible, truncated at 12 chars).
+
 -Action button: “Add to cart”.
 
 How it’s implemented:
+
 -Grid is rendered via a map() over the products state.
 
 Utility functions:
+
 -parsePrice: extracts numbers from messy strings ("$12.99 USD" → 12.99).
+
 -truncate: ensures long text doesn’t break layout.
 
 ## 3. Product Detail Page
@@ -58,9 +72,13 @@ Utility functions:
 Clicking a product opens a dedicated page with full details and action buttons.
 
 Clicking a card opens ProductPage (separate component).
+
 -Shows larger product image, full details, and action buttons:
+
 -Add to Cart (stubbed via console.log).
+
 Buy Now (stubbed via console.log).
+
 Navigation handled by selectedProduct + showProductPage state toggles.
 
 ## 4. Loading & Error Handling
@@ -68,11 +86,17 @@ Navigation handled by selectedProduct + showProductPage state toggles.
 Provides feedback to users during fetch requests.
 
 How it’s implemented:
+
 -loading state shows “Loading…” message.
+
 -error state shows red error message, e.g. “Request timed out. Check backend URL and network.”
+
 Error types handled:
+
 -Timeout (AbortError).
+
 -Non-200 responses (HTTP errors).
+
 -Network errors (backend unreachable).
 
 # Tech Stack
@@ -80,8 +104,11 @@ Error types handled:
 
 LynxJS
  – React-like framework.
+ 
 Hooks: useState, useEffect, useCallback.
+
 TypeScript – strong typing for Product model.
+
 CSS – responsive cards, grid layout, and branding.
 
 ## Backend
@@ -101,7 +128,7 @@ VS Code as IDE
 # Setup & Installation
 ## 1. Clone Repository
 
-'''bash
+'''console
 git clone https://github.com/<your-repo>/tiktok-techjam-2025.git
 cd tiktok-techjam-2025'''
 
