@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 For the TechJam, our team built a simple AI-powered search engine using Lynx for the UI and OpenAI APIs for AI capabilities.
 
@@ -6,7 +6,7 @@ The goal:
 Instead of manually fiddling with filters on platforms like TikTok Shop, users can type a single sentence describing what they want, and our system will return the most relevant products with only key information in a clean, simple, and efficient manner.
 
 
-## Features
+# Features
 
 Clean home page
 Displays an overview of all products with a prominent search bar and action button.
@@ -23,8 +23,8 @@ Clicking a product card opens an enlarged view with detailed bubble-style inform
 Smooth user experience
 Includes timeout handling for slow connections and optimized UI rendering.
 
-## Tech Stack
-# Frontend
+# Tech Stack
+## Frontend
 
 LynxJS – React-like framework for building responsive UI
 
@@ -34,7 +34,7 @@ State management – useState, useEffect, and useCallback for managing query sta
 
 Styling – App.css with responsive, modern design using grids, rounded corners, and spacing
 
-# Backend
+## Backend
 
 Python with FastAPI
 
@@ -48,7 +48,7 @@ dotenv for secure API key management
 
 CORS middleware for cross-origin access by the frontend
 
-# Tools
+## Tools
 
 Git for version control
 
