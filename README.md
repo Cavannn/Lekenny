@@ -38,8 +38,6 @@ The backend:
 
 -Uses regex post-processing to extract structured product info into JSON.
 
--Responds with { response: <summary>, products: <array> }.
-
 -Frontend parses the array with toUIProduct → converts OpenAI’s fields (title, price, image_url, description) into strongly typed Product objects.
 
 ## 2. Product Grid
@@ -58,15 +56,18 @@ Products are displayed in a scrollable two-column grid. Each product is shown as
 
 -Action button: “Add to cart”.
 
+
 How it’s implemented:
 
 -Grid is rendered via a map() over the products state.
+
 
 Utility functions:
 
 -parsePrice: extracts numbers from messy strings ("$12.99 USD" → 12.99).
 
 -truncate: ensures long text doesn’t break layout.
+
 
 ## 3. Product Detail Page
 
@@ -82,15 +83,18 @@ Buy Now (stubbed via console.log).
 
 Navigation handled by selectedProduct + showProductPage state toggles.
 
+
 ## 4. Loading & Error Handling
 
 Provides feedback to users during fetch requests.
+
 
 How it’s implemented:
 
 -loading state shows “Loading…” message.
 
 -error state shows red error message, e.g. “Request timed out. Check backend URL and network.”
+
 
 Error types handled:
 
@@ -101,6 +105,7 @@ Error types handled:
 -Network errors (backend unreachable).
 
 # Tech Stack
+
 ## Frontend
 
 LynxJS
@@ -115,18 +120,25 @@ CSS – responsive cards, grid layout, and branding.
 ## Backend
 
 FastAPI – web server & API routing.
+
 Pydantic – schema validation.
+
 Requests – calls OpenAI API.
+
 dotenv – environment key management.
+
 Regex – parses AI response JSON.
+
 CORSMiddleware – frontend-backend communication.
 
 ## Tools
 
 Git for version control
+
 VS Code as IDE
 
 # Setup & Installation
+
 ## 1. Clone Repository
 
 
@@ -138,13 +150,11 @@ cd tiktok-techjam-2025
 
 cd backend
 python -m venv venv
-
 ### Activate venv
 ### Windows
 venv\Scripts\activate
 ### macOS/Linux
 source venv/bin/activate
-
 ### Install dependencies
 pip install fastapi uvicorn pydantic requests python-dotenv
 
@@ -153,6 +163,7 @@ pip install fastapi uvicorn pydantic requests python-dotenv
 ### Required: Create .env file in /backend with your OpenAI key:
 
 OPENAI_API_KEY=sk-xxxxxxx
+
 
 
 Run backend:
@@ -164,7 +175,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 Backend now available at:
 http://localhost:8000/chat
 
-3. Frontend Setup (Lynx)
+### 3. Frontend Setup (Lynx)
 
 cd frontend
 npm install
@@ -173,11 +184,11 @@ npm run dev
 
 package.json already contains all required dependencies:
 
-@lynx-js/react (runtime)
+- @lynx-js/react (runtime)
 
-@lynx-js/rspeedy (build tool)
+- @lynx-js/rspeedy (build tool)
 
-@lynx-js/preact-devtools, typescript, vitest (dev/test)
+- @lynx-js/preact-devtools, typescript, vitest (dev/test)
 
 Open browser at link provided in terminal (e.g. http://localhost:3000).
 
