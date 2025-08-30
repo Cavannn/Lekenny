@@ -1,41 +1,46 @@
 /* Safe area wrapper so header clears the iPhone dynamic island */
 .SafeArea {
   padding-top: calc(env(safe-area-inset-top) + 8px);
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Background like your working template — sits behind content */
+/* Background slab */
 .Background {
   position: fixed;
   left: 0; top: 0; right: 0; bottom: 0;
   background: linear-gradient(180deg, #111 0%, #1f1f1f 220px, transparent 220px);
-  z-index: 0; /* stays below */
+  z-index: 0;
 }
 
 /* Page wrapper */
 .Shop {
   position: relative;
-  z-index: 1; /* ensures it’s above the background */
+  z-index: 1;
   padding: 12px;
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 80px;
 }
-
 
 /* Header */
 .Header {
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 12px;
   border-radius: 12px;
   background-color: #171717;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #2a2a2a;
+  border: 1px solid #2a2a2a;
 }
 
 .Header__brand {
+  display: flex;
   flex-direction: row;
   align-items: center;
 }
@@ -45,7 +50,7 @@
   height: 28px;
   border-radius: 6px;
   margin-right: 10px;
-  background-color: #fff; /* remove if your logo has its own bg */
+  background-color: #fff;
 }
 
 .Header__title {
@@ -55,14 +60,13 @@
 }
 
 .Header__clear {
-  padding-left: 12px;
-  padding-right: 12px;
+  padding: 0 12px;
   height: 32px;
+  display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #343434;
+  border: 1px solid #343434;
   background-color: #1e1e1e;
 }
 
@@ -70,39 +74,33 @@
   color: #e5e5e5;
 }
 
-/* Filters */
-.Filters {
+/* Filters / Status */
+.Filters, .Status {
   margin-top: 12px;
   background-color: #0b0b0b;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #222;
+  border: 1px solid #222;
   border-radius: 12px;
   padding: 12px;
 }
 
-.Filters__label {
+.Filters__label, .Status__text {
   color: #bdbdbd;
   font-size: 12px;
   margin-bottom: 6px;
 }
 
 .Filters__chips {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 /* Chip */
 .Chip {
-  border-color: #2f2f2f;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid #2f2f2f;
   background-color: #141414;
   border-radius: 999px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 6px 10px;
   margin-right: 8px;
   margin-bottom: 8px;
 }
@@ -117,16 +115,94 @@
   font-size: 12px;
 }
 
+/* Search */
+.SearchBar {
+  margin-top: 12px;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.SearchInputContainer {
+  flex: 1;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  background: #171717;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+}
+
+.SearchInput {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+  outline: none;
+}
+
+.SearchInput::placeholder {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+.SearchButton {
+  width: 70px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #000000;
+}
+
+.SearchButton__text {
+  font-weight: 700;
+  color: #041016;
+  font-size: 12px;
+}
+
+/* Response */
+.Response {
+  margin-top: 12px;
+}
+
+.Response__label {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.Response__text {
+  background-color: #000000;  
+  color: #ffffff;           
+  border: 1px solid #000000;  
+  padding: 8px 12px;     
+  border-radius: 12px;       
+  display: inline-block;      
+}
+
+
 /* Grid */
 .Grid {
   margin-top: 12px;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 8px;
 }
 
 .Grid__col {
-  width: 49%;
+  width: calc(50% - 4px);
   margin-bottom: 12px;
 }
 
@@ -135,24 +211,33 @@
   background-color: #111111;
   border-radius: 16px;
   overflow: hidden;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #262626;
+  border: 1px solid #262626;
+  display: flex;
+  flex-direction: column;
+  height: 340px;
 }
 
 .Card__image {
   width: 100%;
   height: 160px;
+  display: block;
 }
 
 .Card__body {
   padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .Card__title {
   color: #ffffff;
-  font-weight: 600;   /* <-- was broken before; now fixed */
+  font-weight: 600;
   line-height: 1.3;
+  /* Reserve space for up to 2 lines and clip overflow */
+  max-height: calc(1.3em * 2);
+  min-height: calc(1.3em * 2);
+  overflow: hidden;
 }
 
 .Card__price {
@@ -160,24 +245,29 @@
   margin-top: 6px;
 }
 
+.Card__shipping {
+  color: #9e9e9e;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
 .Card__tags {
   margin-top: 8px;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  /* Constrain tag area so CTA stays aligned */
+  max-height: 40px;
+  overflow: hidden;
 }
 
 .Tag {
   background-color: #1a1a1a;
   border-radius: 999px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding: 4px 8px;
   margin-right: 6px;
   margin-bottom: 6px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #2b2b2b;
+  border: 1px solid #2b2b2b;
 }
 
 .Tag__text {
@@ -188,10 +278,13 @@
 .Card__cta {
   margin-top: 10px;
   height: 36px;
+  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: #0ea5e9; /* cyan-ish CTA */
+  background-color: #0ea5e9;
+  /* Pin CTA to the bottom of the card body */
+  margin-top: auto;
 }
 
 .Card__ctaText {
@@ -201,6 +294,7 @@
 
 /* Empty state */
 .Empty {
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 48px;
@@ -209,4 +303,191 @@
 
 .Empty__text {
   color: #9e9e9e;
+}
+
+/* Add these styles to your App.css file */
+
+.ProductPage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductPage__header {
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 16px);
+  left: 16px;
+  z-index: 101;
+}
+
+.ProductPage__backButton {
+  background-color: black;
+  border-radius: 20px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.ProductPage__backText {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ProductPage__imageContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111;
+  padding: 0;
+  padding-top: calc(env(safe-area-inset-top) + 12px);
+  overflow: hidden;
+}
+
+.ProductPage__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.ProductPage__details {
+  flex: 1;
+  background-color: #171717;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ProductPage__info {
+  flex: 1;
+}
+
+.ProductPage__title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.ProductPage__price {
+  color: #0ea5e9;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.ProductPage__shipping {
+  color: #bdbdbd;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.ProductPage__tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.ProductPage__tag {
+  background-color: #1a1a1a;
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #2b2b2b;
+}
+
+.ProductPage__tagText {
+  color: #cfcfcf;
+  font-size: 12px;
+}
+
+.ProductPage__quantityContainer {
+  margin-bottom: 32px;
+}
+
+.ProductPage__quantityLabel {
+  color: #bdbdbd;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.ProductPage__quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ProductPage__quantityButton {
+  width: 40px;
+  height: 40px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3a3a3a;
+}
+
+.ProductPage__quantityButtonText {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ProductPage__quantityValue {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.ProductPage__actions {
+  display: flex;
+  gap: 12px;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 8px);
+}
+
+.ProductPage__addToCart {
+  flex: 1;
+  height: 50px;
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3a3a3a;
+}
+
+.ProductPage__addToCartText {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.ProductPage__buyNow {
+  flex: 1;
+  height: 50px;
+  background-color: #0ea5e9;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProductPage__buyNowText {
+  color: #041016;
+  font-size: 16px;
+  font-weight: 700;
 }

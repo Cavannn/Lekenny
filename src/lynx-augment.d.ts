@@ -1,6 +1,11 @@
 // src/lynx-augment.d.ts
 import '@lynx-js/react'; // load module so we can augment it
 
+// Global constants injected at build time via lynx.config.ts define
+declare global {
+  const __BACKEND_URL__: string | undefined
+}
+
 declare module '@lynx-js/react' {
   namespace JSX {
     // This merges with the existing IntrinsicElements
