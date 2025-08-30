@@ -31,6 +31,7 @@ How it’s implemented:
 -Displays loading, error, or response text states depending on fetch outcome.
 
 The backend:
+
 -Exposes a FastAPI /chat endpoint.
 
 -Forwards the query to OpenAI’s API.
