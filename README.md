@@ -20,9 +20,13 @@ The AI parses intent, extracts key product requirements, and returns a ranked li
 
 How it’s implemented:
 -The query is managed in frontend state (message in App.tsx) via Lynx’s useState.
+
 -On submit (handleSubmit):
+
 -Sends a POST request to the backend with { message }.
+
 -Uses AbortController with a 12s timeout to prevent hanging.
+
 -Displays loading, error, or response text states depending on fetch outcome.
 
 The backend:
