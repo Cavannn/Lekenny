@@ -129,36 +129,35 @@ VS Code as IDE
 # Setup & Installation
 ## 1. Clone Repository
 
-'''console
+
 git clone https://github.com/<your-repo>/tiktok-techjam-2025.git
-cd tiktok-techjam-2025'''
+cd tiktok-techjam-2025
 
 
 ## 2. Backend Setup (FastAPI)
-'''bash
+
 cd backend
 python -m venv venv
 
-# Activate venv
-# Windows
+### Activate venv
+### Windows
 venv\Scripts\activate
-# macOS/Linux
+### macOS/Linux
 source venv/bin/activate
 
-# Install dependencies
-pip install fastapi uvicorn pydantic requests python-dotenv'''
+### Install dependencies
+pip install fastapi uvicorn pydantic requests python-dotenv
 
 
 
-## Required: Create .env file in /backend with your OpenAI key:
+### Required: Create .env file in /backend with your OpenAI key:
 
 OPENAI_API_KEY=sk-xxxxxxx
 
 
 Run backend:
 
-'''bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000'''
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 
 
@@ -166,10 +165,10 @@ Backend now available at:
 http://localhost:8000/chat
 
 3. Frontend Setup (Lynx)
-'''bash
+
 cd frontend
 npm install
-npm run dev'''
+npm run dev
 
 
 package.json already contains all required dependencies:
