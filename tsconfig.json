@@ -1,17 +1,23 @@
 {
   "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "jsxImportSource": "@lynx-js/react",
-
-    "module": "node18",
-    "moduleResolution": "node16",
-
     "strict": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-
-    "esModuleInterop": true,
     "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
-  "exclude": ["dist/"],
+  "include": [
+    "src/**/*",
+    "../Lekenny/src/__tests__/index.test.js",
+    "../Lekenny/src/__tests__/index.test.tsx",
+    "../Lekenny/src/App.tsx",
+    "../Lekenny/src/index.tsx"
+, "../Lekenny/src/lynx-augment.d.ts", "../Lekenny/src/rspeedy-env.d.ts"  ],
+  "exclude": [
+    "../Lekenny/dist"
+  ]
 }
